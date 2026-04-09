@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enroll</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<header>
+  <a href="/">
+    <img src="{% static 'images/casa.png' %}" 
+         alt="Home" 
+         style="filter: brightness(0) invert(1);position: absolute; top: 20px; left: 20px; width: 50px; height: 50px;">
+  </a>
+
+  <h1>Colțov Academy</h1>
+
+  <a href="/profile">
+    <img src="{% static 'images/profil.png' %}" 
+         alt="Profile" 
+         style="filter: brightness(0) invert(1);position: absolute; top: 20px; right: 20px; width: 50px; height: 50px;">
+  </a>
+</header>
+
+<div class="container">
+  <div class="card">
+
+    <h1>{{ course.title }}</h1>
+
+    <p>{{ course.description }}</p>
+
+    <p><strong>Price:</strong> ${{ course.price }}</p>
+
+    <hr>
+
+    <h3>Are you sure you want to enroll?</h3>
+
+    <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
+
+  <form action="{% url 'enroll_course' course.slug %}" method="post" style="margin: 0;">
+    {% csrf_token %}
+    <button type="submit" style="width: auto; padding: 10px 20px;">Yes</button>
+  </form>
+
+  <a href="{% url 'home' %}" style="class=btn">No</a>
+
+</div>
+
+
+<footer>
+  © 2026 Coltov Academy — All rights reserved
+</footer>
+
+</body>
+</html>

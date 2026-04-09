@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ course.title }} | Coltov Academy</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header>
+  <a href="/">
+    <img src="{% static 'images/casa.png' %}" 
+         alt="Home" 
+         style="filter: brightness(0) invert(1);position: absolute; top: 20px; left: 20px; width: 50px; height: 50px;">
+  </a>
+
+  <h1>Colţov Academy</h1>
+
+  <a href="/profile">
+    <img src="{% static 'images/profil.png' %}" 
+         alt="Profile" 
+         style="filter: brightness(0) invert(1);position: absolute; top: 20px; right: 20px; width: 50px; height: 50px;">
+  </a>
+</header>
+
+<div class="container">
+  <div class="card">
+
+    <h1>{{ course.title }}</h1>
+    <p>{{ course.description }}</p>
+    <hr>
+
+    {% if course.materials %}
+    {% with course.materials.url as file_url %}
+      <a href="{{ file_url }}" class="big-add-btn" download>Download Material</a>
+    {% endwith %}
+    {% endif %}
+
+
+  </div>
+</div>
+
+
+
+<footer>
+  © 2026 Coltov Academy — All rights reserved
+</footer>
+
+</body>
+</html>
+

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bought</title>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+
+<header>
+  <a href="/">
+    <img src="{% static 'images/casa.png' %}" 
+         alt="Home" 
+         style="filter: brightness(0) invert(1);position: absolute; top: 20px; left: 20px; width: 50px; height: 50px;">
+  </a>
+
+  <h1>Colțov Academy</h1>
+
+  <a href="/profile">
+    <img src="{% static 'images/profil.png' %}" 
+         alt="Profile" 
+         style="filter: brightness(0) invert(1);position: absolute; top: 20px; right: 20px; width: 50px; height: 50px;">
+  </a>
+</header>
+
+<div class="container">
+  <div class="card">
+
+    <h1>Courses That I Bought</h1>
+
+    {% for course in courses %}
+      <div class="card" style="word-wrap: break-word; overflow-wrap: break-word; word-break: break-word; margin-bottom: 20px;">
+        <h2>{{ course.title }}</h2>
+        <p><strong>Instructor:</strong> {{ course.instructor.username }}</p>
+        <p>{{ course.description }}</p>
+        <p><strong>Price:</strong> ${{ course.price }}</p>
+
+        <a href="{% url 'course_view' course.slug %}">Go to Course</a>
+      </div>
+    {% empty %}
+      <p style="text-align:center;">You haven't bought any courses yet.</p>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+
+<footer>
+  © 2026 Coltov Academy — All rights reserved
+</footer>
+
+</body>
+</html>

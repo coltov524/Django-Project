@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coltov Academy</title>
+
+</head>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<body>
+  
+
+
+<header>
+  <a href="/">
+    <img src="{% static 'images/casa.png' %}" 
+         alt="Home" 
+         style="filter: brightness(0) invert(1);position: absolute; top: 20px; left: 20px; width: 50px; height: 50px;">
+  </a>
+
+  <h1>Colțov Academy</h1>
+
+  <a href="profile">
+    <img src="{% static 'images/profil.png' %}" 
+         alt="Profile" 
+         style="filter: brightness(0) invert(1);position: absolute; top: 20px; right: 20px; width: 50px; height: 50px;">
+  </a>
+</header>
+
+
+
+
+<div class="container">
+  <div class="card">
+
+    <a href="{% url 'create_course' %}" class="big-add-btn">+ Post Course </a>
+    
+    {% for course in courses %}
+      <div class="card" style="word-wrap: break-word; overflow-wrap: break-word; word-break: break-word">
+        <h2>{{ course.title }}</h2>
+        <p><strong>Instructor:</strong> {{ course.instructor.username }}</p>
+        <p>{{ course.description }}</p>
+        <p><strong>Price:</strong> ${{ course.price }}</p>
+
+        <a href="{% url 'enroll_course' course.slug %}">Enroll</a>
+      </div>
+    {% empty %}
+      <p style="text-align:center;">No courses available yet.</p>
+    {% endfor %}
+
+  </div>
+</div>
+
+
+
+<footer>
+  © 2026 Coltov Academy — All rights reserved
+</footer>
+
+</body>
+</html>

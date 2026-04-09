@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coltov Academy — Sign Up </title>
+
+<script>
+    const isAuthenticated = {{ user.is_authenticated|yesno:"true,false" }};
+</script>
+<script src="{% static 'js/sendhome.js' %}"></script>
+
+</head>
+
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+<body>
+
+<header>
+  
+  <h1>Colțov Academy</h1>
+
+</header>
+
+<div class="container">
+  <div class="card">
+    <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+    {% endif %}
+    <button type="submit">Sign Up</button>
+    <p>Already have an account? </p>
+    <a href="{% url 'login'%}">Log In</a>
+  </form>
+  </div>
+</div>
+
+<footer>
+  © 2026 Coltov Academy — All rights reserved
+</footer>
+
+</body>
+</html>
