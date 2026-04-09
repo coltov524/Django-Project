@@ -133,21 +133,6 @@ EMAIL_HOST_PASSWORD = 'your-app-password'
 
 ---
 
-📈 Possible Improvements
-
-To extend this project into a production-ready platform:
-
-- 💳 Integrate payment systems (Stripe / PayPal)
-- ⭐ Add course reviews and rating system
-- 🔍 Implement search and filtering
-- 📊 Create user dashboards (student & instructor)
-- 📦 Add pagination for large datasets
-- 🌐 Deploy the application (Render, Railway, AWS)
-- 🔐 Improve permissions (roles: admin, instructor, student)
-- 📱 Make UI responsive and modern (Bootstrap / Tailwind)
-
----
-
 👨‍💻 Author
 
 Developed by Colțov Tudor-Alexandru
