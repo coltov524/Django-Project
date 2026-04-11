@@ -1,150 +1,178 @@
-📚 Django Course Marketplace
+# 📚 Django Course Marketplace — Coltov Academy
 
-A web-based learning platform built with Django that enables users to create, sell, purchase, and enroll in online courses.
-The platform is designed to simulate a real-world e-learning marketplace, offering both instructor and student functionalities.
+Coltov Academy is a full-stack Django-based course marketplace platform where users can create, sell, and enroll in online courses. It is designed to simulate a real-world e-learning system with full support for instructor and student workflows.
 
-One of the core features is the automated email notification system, which sends confirmation emails whenever a user enrolls in a course, improving user engagement and experience.
-
----
-
-🚀 Core Features
-
-- 👤 User Authentication System
-  
-  - Secure registration, login, and logout
-  - Session-based authentication
-
-- 📚 Course Management
-  
-  - Users can create and publish their own courses
-  - Edit and delete existing courses
-  - Structured course data (title, description, price, etc.)
-
-- 💰 Marketplace Functionality
-  
-  - Users can browse available courses
-  - Purchase or enroll in courses created by other users
-  - Clear separation between buyers and sellers
-
-- 🛒 Enrollment System
-  
-  - Seamless enrollment flow
-  - Tracks user-course relationships
-
-- 📧 Email Notification System
-  
-  - Automatic email sent upon successful enrollment
-  - Configurable SMTP integration
-
-- 🗂️ Course Browsing
-  
-  - List view of all available courses
-  - Dedicated detail page for each course
-
-- 🔐 Security & Data Handling
-  
-  - Django built-in protections (CSRF, authentication system)
-  - Safe handling of user data
+The project focuses on backend development using Django, implementing authentication, course management, enrollment logic, and automated email notifications, with a clean and scalable architecture.
 
 ---
 
-🧠 Project Purpose
+## Overview
 
-This project was developed as a full-stack Django application to demonstrate:
+Users can register, log in, and interact with a course marketplace. Instructors can publish and manage their own courses, while students can browse and enroll in courses created by others.
 
-- understanding of MVC (Model-View-Template) architecture
-- ability to build a functional marketplace system
-- implementation of backend logic with real-world use cases
-- integration of email services within a web application
+Each successful enrollment triggers an automatic confirmation email, improving user feedback and engagement.
 
-It can serve as a strong foundation for more advanced e-learning platforms.
+The project is built using Django’s MVT architecture and uses Class-Based Views (CBVs) to ensure clean, reusable, and maintainable backend logic.
 
 ---
 
-🛠️ Tech Stack
+## Features
 
-- Backend: Django (Python)
-- Frontend: HTML, CSS (can be extended with Bootstrap)
-- Database: SQLite (default Django database)
-- Email Service: SMTP (Gmail or other providers)
-- Environment Management: Virtualenv
+### Authentication System
+
+* User registration and secure login/logout
+* Password change functionality
+* Session-based authentication
+* Unique username and email validation
 
 ---
 
-⚙️ Installation & Setup
+### Course Management (Instructor Side)
 
-Follow these steps to run the project locally:
+* Create, edit, and delete courses
+* Upload course content and media files
+* Ownership-based permissions (only course creator can modify)
+* Structured course data (title, description, price, etc.)
 
-# Clone the repository
-git clone https://github.com/coltov524/Django-Project.git
+---
 
-# Navigate into the project folder
+### Marketplace (Student Side)
+
+* Browse all available courses
+* View detailed course pages
+* Enroll/purchase courses instantly
+* Prevent duplicate enrollments
+* Clear separation between instructors and students
+
+---
+
+### Enrollment System
+
+* Tracks user ↔ course relationships
+* Secure enrollment logic
+* Automatic enrollment processing
+* Integration with email notification system
+
+---
+
+### Email Notifications
+
+* SMTP-based email system (Gmail or compatible providers)
+* Automatic confirmation email after enrollment
+* Configurable via Django settings
+
+---
+
+## Architecture
+
+The system follows Django’s MVT architecture with strong separation of concerns:
+
+* Models: handle courses, users, and enrollments
+* Views (CBVs): manage business logic and request handling
+* Templates: handle frontend rendering
+* Forms: manage validation and secure input processing
+
+CBVs are used throughout the project to improve scalability, reduce repetition, and maintain clean structure.
+
+The application is modular, separating user management and course functionality into distinct apps.
+
+---
+
+## Tech Stack
+
+* Django (Python)
+* HTML5, CSS3
+* SQLite (default database)
+* Django Authentication System
+* SMTP Email Integration
+* Class-Based Views (CBVs)
+* Virtualenv environment
+
+---
+
+## Project Structure
+
+Django-Project/
+└── Django-project-main/
+└── Proiect_Coltov/
+└── Proiect/
+├── manage.py
+├── db.sqlite3
+├── courses/
+├── users/
+├── templates/
+├── static/
+├── media/
+
+---
+
+## Installation & Setup
+
+git clone [https://github.com/coltov524/Django-Project.git](https://github.com/coltov524/Django-Project.git)
 cd Django-Project
 
-# Create a virtual environment
 python -m venv venv
 
-# Activate the virtual environment
-# Windows:
+Windows:
 venv\Scripts\activate
-# macOS/Linux:
+
+Mac/Linux:
 source venv/bin/activate
 
-# Install dependencies
 pip install -r requirements.txt
 
-# Apply database migrations
 python manage.py migrate
 
-# Create a superuser (optional but recommended)
 python manage.py createsuperuser
 
-# Start the development server
 python manage.py runserver
 
 ---
 
-📧 Email Configuration
-
-To enable email notifications, configure your email settings in "settings.py":
+## Email Configuration
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your-email@gmail.com'
+EMAIL_HOST_USER = '[your-email@gmail.com](mailto:your-email@gmail.com)'
 EMAIL_HOST_PASSWORD = 'your-app-password'
 
-⚠️ For Gmail, you will need to use an App Password, not your actual account password.
+Gmail requires an App Password instead of the regular account password.
 
 ---
 
-📌 How It Works
+## How It Works
 
-1. A user creates an account or logs in
-2. Users can browse all available courses on the platform
-3. A user can:
-   - enroll in a course
-   - or create and publish their own course
-4. When enrolling in a course:
-   - the system registers the enrollment
-   - an email confirmation is automatically sent
-5. Course creators can manage their own content
+A user registers and logs in, then gains access to the marketplace.
+
+From there:
+
+* Users can browse available courses
+* Instructors can create and manage courses
+* Students can enroll in courses
+
+When a user enrolls:
+
+* The system saves the enrollment in the database
+* Links the user to the selected course
+* Sends an automatic confirmation email
+
+Each course is managed independently by its creator.
 
 ---
 
-👨‍💻 Author
+## Future Improvements
 
-Developed by Colțov Tudor-Alexandru
+* Payment integration (Stripe / PayPal)
+* Course rating and review system
+* Advanced search and filtering
+* Video hosting and streaming support
+* REST API using Django REST Framework
+* Deployment to cloud platforms (Render / Railway / AWS)
 
 ---
 
-⭐ Final Notes
+## Author
 
-This project represents a solid foundation for a real-world Django application and demonstrates essential backend development skills such as:
-
-- data modeling
-- user authentication
-- business logic implementation
-- email integration
-
+Colțov Tudor-Alexandru
