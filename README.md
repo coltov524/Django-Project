@@ -1,4 +1,4 @@
-# 📚 Django Course Marketplace — Coltov Academy
+# 📚 Django Course Marketplace — Colțov Academy
 
 Coltov Academy is a full-stack Django-based course marketplace platform where users can create, sell, and enroll in online courses. It is designed to simulate a real-world e-learning system with full support for instructor and student workflows.
 
